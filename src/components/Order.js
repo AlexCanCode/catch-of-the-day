@@ -10,12 +10,14 @@ class Order extends React.Component {
 		if(!fish) return null; //returning null renders nothing 
 
 		if(!isAvailable) {
-			return <li key={key} >Sorry {fish ? fish.name : 'fish'} is not available</li>
+			return <li key={key} index={key}>Sorry {fish ? fish.name : 'fish'} is not available</li>
 		}
-		return <li key={key} >
+		return <li key={key} index={key} >
 			{count} lbs {fish.name}
 
 			{formatPrice(count * fish.price)}
+
+			<button onClick={() => this.props.removeFishFromOrder(key)}>Remove</button>
 		</li>
 	}
 	render() {
